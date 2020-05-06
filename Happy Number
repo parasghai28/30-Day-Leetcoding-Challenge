@@ -1,0 +1,24 @@
+#Solution 1 
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> seen = new HashSet<>();
+        while(n!=1) {
+            int current = n;
+            int sum = 0;
+            while(current != 0) {
+               sum += (current % 10) * (current % 10);
+               current /= 10; 
+            }
+            
+            // Exit condition - If sum repeats, exit loop
+            if(seen.contains(sum)) {
+                return false;
+            }
+            seen.add(sum);
+            n = sum;
+        }
+        return true;     
+    }
+}
+
+#solution 2- Think of Slow and fast pointer
